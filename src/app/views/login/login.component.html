@@ -1,0 +1,20 @@
+<main class="bgPurple bg-viwport center">
+
+  <mat-card class="p-3">
+    <div class="mb-1 align-text-center">
+      <h1 class="serif">Welcome to Socialo!</h1>
+      <p>Not a member yet? <a routerLink="/signup" class="purple">Create an account</a></p>
+    </div>
+
+    <form (ngSubmit)="onSubmit()" class="form mb-1" >
+      <mat-form-field class="mb-1" >
+          <input matInput placeholder="nickname" name="nickname" class="input-light"  [(ngModel)]="nickname" required>
+          <mat-error *ngIf="loginForm.invalid">{{getErrorMessage()}}</mat-error>
+          <mat-hint *ngIf="isInvalid">{{userInvalid}}</mat-hint>
+          <mat-error *ngIf="isInvalid" class="danger">{{userInvalid}}</mat-error>
+      </mat-form-field>
+      <button mat-raised-button>Login</button>
+    </form>
+  </mat-card>
+
+</main>

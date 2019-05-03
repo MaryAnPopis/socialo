@@ -1,0 +1,26 @@
+<main class="bgPurple bg-viwport center">
+
+  <mat-card class="p-3">
+    <div class="mb-1 align-text-center">
+      <h1 class="serif">Welcome to Socialo!</h1>
+      <p>Already a member? <a routerLink="/login" class="purple">Log in</a></p>
+    </div>
+
+    <form (ngSubmit)="onSubmit()" class="form mb-1" >
+      <mat-form-field class="mb-1 fulwidth" >
+          <input matInput placeholder="nickname" name="nickname" class="input-light"  [(ngModel)]="nickname" required>
+          <mat-error *ngIf="loginForm.invalid">{{getErrorMessage()}}</mat-error>
+          <mat-hint *ngIf="isInvalid">{{userInvalid}}</mat-hint>
+          <mat-error *ngIf="isInvalid" class="danger">{{userInvalid}}</mat-error>
+      </mat-form-field>
+      <h2 class="serif align-text-center mb-1">Choose your preferences</h2>
+      <mat-form-field class="mb-1" >
+      <mat-select placeholder="Preferences"  (openedChange)="getPreferences($event)" [formControl]="preferences" multiple required>
+        <mat-option *ngFor="let tag of preferencesList" [value]="tag.name">{{tag.name}}</mat-option>
+      </mat-select>
+      <mat-error *ngIf="preferences.invalid">{{getErrorMessage()}}</mat-error>
+    </mat-form-field>
+      <button mat-raised-button>Create user!</button>
+    </form>
+  </mat-card>
+</main>

@@ -1,0 +1,9 @@
+<mat-toolbar class="bgPurple color-white items-end">
+  <button mat-button class="username">My posts</button>
+  <button mat-button class="username">Suggested posts</button>
+  <button mat-button class="username">Post I like</button>
+  <button mat-button [matMenuTriggerFor]="menu" class="username">Hi, {{ username }}</button>
+    <mat-menu #menu="matMenu">
+      <button mat-menu-item (click)="logout()">Log out</button>
+    </mat-menu>
+</mat-toolbar>

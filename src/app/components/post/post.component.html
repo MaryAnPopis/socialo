@@ -1,0 +1,12 @@
+<mat-card class="p-3 card-post">
+  <h4 class="title"><a [routerLink]="post/post.id">{{ post.title }}</a></h4>
+  <div class="img-container">
+    <img [src]="post.image" alt="">
+  </div>
+  <div class="bottom-card">
+    <p class="text">{{ post.text }}</p>
+    <button (click)="toggleLike()" type="button" class="like-button" [ngClass]="{'like-button--liked': liked}" mat-icon-button>
+        <mat-icon>thumb_up_alt</mat-icon>
+      </button>
+  </div>
+</mat-card>

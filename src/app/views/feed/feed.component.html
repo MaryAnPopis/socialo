@@ -1,0 +1,9 @@
+<main class="bg-light">
+ <app-appbar></app-appbar>
+ <button mat-raised-button color="primary" class="center" (click)="createPost()">Add post</button>
+ <div class="center-content">
+   <div class="post-container">
+     <app-post *ngFor="let post of postList" [post]="post"></app-post>
+   </div>
+ </div>
+</main>

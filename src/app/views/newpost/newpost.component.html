@@ -1,0 +1,31 @@
+<main class="bg-light ">
+    <app-appbar></app-appbar>
+    <div class="form-post">
+        <mat-spinner *ngIf="loading"></mat-spinner>
+    <mat-card class="p-3" *ngIf="!loading">
+
+        <form (ngSubmit)="onSubmit()" class="form mb-1" >
+          <h1 class="serif">Create a post</h1>
+            <mat-form-field class="">
+                <input matInput placeholder="Title" class="fullwidth" [formControl]="titleForm"  [(ngModel)]="title"  required>
+                <mat-error *ngIf="titleForm.invalid">{{getErrorMessage()}}</mat-error>
+            </mat-form-field>
+            <mat-form-field >
+                <textarea matInput placeholder="Text"  [formControl]="textForm"  [(ngModel)]="text"  required></textarea>
+                <mat-error *ngIf="textForm.invalid">{{getErrorMessage()}}</mat-error>
+            </mat-form-field>
+            <mat-form-field class="mb-1" >
+                <mat-select placeholder="Preferences"  (openedChange)="getPreferences($event)" [formControl]="preferences" multiple required>
+                  <mat-option *ngFor="let tag of preferencesList" [value]="tag.name">{{tag.name}}</mat-option>
+                </mat-select>
+                <mat-error *ngIf="preferences.invalid">{{getErrorMessage()}}</mat-error>
+              </mat-form-field>
+            <div class="full-width">
+                <input type="file" (change)="onFileChanged($event)" class="mb-1">
+
+                <button type="submit" mat-raised-button>Create Post</button>
+            </div>
+          </form>
+        </mat-card>
+      </div>
+</main>
